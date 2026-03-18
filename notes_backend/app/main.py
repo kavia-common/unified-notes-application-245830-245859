@@ -1,5 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.core.config import get_settings
 from app.routers import auth, notes, tags
@@ -21,15 +23,28 @@ def create_app() -> FastAPI:
         openapi_tags=openapi_tags,
     )
 
-    # CORS: for local dev and deployed frontend
-    if settings.cors_origins:
-        app.add_middleware(
-            CORSMiddleware,
-            allow_origins=settings.cors_origins,
-            allow_credentials=True,
-            allow_methods=["*"],
-            allow_headers=["*"],
-        )
+    # CORS: Required for browser-based frontend->backend calls.
+    # If CORS_ORIGINS isn't configured, default to "*" so the app works out-of-the-box
+    # in typical dev/preview setups.
+    allow_origins = settings.cors_origins or ["*"]
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=allow_origins,
+        allow_credentials=False if allow_origins == ["*"] else True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    @app.exception_handler(StarletteHTTPException)
+    async def http_exception_handler(request: Request, exc: StarletteHTTPException) -> JSONResponse:
+        """Return a consistent error shape for the frontend.
+
+        Frontend expects JSON errors like: { "message": "..." }.
+        FastAPI's default is: { "detail": "..." }.
+        """
+        detail = exc.detail
+        message = detail if isinstance(detail, str) else "Request failed"
+        return JSONResponse(status_code=exc.status_code, content={"message": message, "details": detail})
 
     @app.get("/health", tags=["health"], summary="Healthcheck")
     def health() -> dict:
