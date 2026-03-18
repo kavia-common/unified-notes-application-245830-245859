@@ -101,7 +101,7 @@ export default function SignupPage() {
 
             <p className="text-sm" style={{ color: "var(--muted)" }}>
               Already have an account?{" "}
-              <Link className="underline" href="/auth/login">
+              <Link className="link-accent" href="/auth/login">
                 Login
               </Link>
             </p>

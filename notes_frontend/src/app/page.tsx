@@ -20,7 +20,7 @@ export default function Home() {
                 Notes that stay in sync
               </p>
               <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
-                Retro Notes
+                <span className="heading-gradient">Retro Notes</span>
               </h1>
             </div>
           </div>
@@ -43,10 +43,10 @@ export default function Home() {
           </div>
 
           <div className="mt-7 flex flex-wrap gap-2">
-            <span className="badge">Responsive</span>
-            <span className="badge">Accessible</span>
-            <span className="badge">Search + Tags</span>
-            <span className="badge">Cloud sync</span>
+            <span className="badge badge-accent">Responsive</span>
+            <span className="badge badge-accent">Accessible</span>
+            <span className="badge badge-accent">Search + Tags</span>
+            <span className="badge badge-accent">Cloud sync</span>
           </div>
         </section>
 

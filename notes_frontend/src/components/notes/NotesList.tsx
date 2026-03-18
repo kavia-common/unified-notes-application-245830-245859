@@ -56,7 +56,7 @@ export default function NotesList(props: {
     <section className="panel p-4 md:p-6">
       <header className="flex items-center justify-between gap-3">
         <h2 className="text-lg font-semibold">Notes</h2>
-        <p className="text-sm" style={{ color: "var(--muted)" }}>
+        <p className="text-sm meta">
           {notes.length} total
         </p>
       </header>
@@ -99,7 +99,7 @@ export default function NotesList(props: {
               ) : null}
             </div>
 
-            <p className="mt-3 text-xs" style={{ color: "rgba(71, 85, 105, 0.85)" }}>
+            <p className="mt-3 text-xs meta">
               {formatTime(n.updatedAt || n.createdAt)}
             </p>
           </li>

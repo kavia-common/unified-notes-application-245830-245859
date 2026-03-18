@@ -15,6 +15,15 @@
   /* Accents */
   --accent: #3b82f6; /* blue-500 */
   --accent-2: #06b6d4; /* cyan-500 */
+  --accent-3: #a78bfa; /* violet-400 for extra color variety */
+
+  /* Typography accents (keeps readability by defaulting to --text/--muted) */
+  --heading: rgba(248, 250, 252, 0.96);
+  --link: rgba(96, 165, 250, 0.98); /* blue-400 */
+  --link-hover: rgba(34, 211, 238, 0.98); /* cyan-400 */
+  --label: rgba(167, 139, 250, 0.92); /* violet-400 */
+  --meta: rgba(148, 163, 184, 0.86); /* same as muted, but semantically named */
+  --meta-strong: rgba(226, 232, 240, 0.82);
 
   /* States */
   --danger: #fb7185; /* rose-400 (more legible on dark) */
@@ -61,8 +70,23 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--link);
   text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color 140ms ease, text-decoration-color 140ms ease, filter 140ms ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-decoration-color: rgba(34, 211, 238, 0.55);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading);
 }
 
 ::selection {
@@ -86,6 +110,38 @@ a {
 .container {
   width: min(1200px, calc(100% - 2rem));
   margin-inline: auto;
+}
+
+/* Accent typography utilities (opt-in, avoids breaking existing readability) */
+.heading-gradient {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.link-accent {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: rgba(96, 165, 250, 0.45);
+  text-underline-offset: 3px;
+}
+
+.link-accent:hover {
+  color: var(--link-hover);
+  text-decoration-color: rgba(34, 211, 238, 0.55);
+}
+
+.label-accent {
+  color: var(--label);
+}
+
+.meta {
+  color: var(--meta);
+}
+
+.meta-strong {
+  color: var(--meta-strong);
 }
 
 /* TopBar */
@@ -235,8 +291,15 @@ a {
 
   border: 1px solid var(--border);
   background: rgba(25, 28, 40, 0.58);
-  color: rgba(226, 232, 240, 0.82);
+  color: rgba(226, 232, 240, 0.86);
   font-size: 0.85rem;
+}
+
+/* Colorful badge variant (opt-in) */
+.badge-accent {
+  border-color: rgba(59, 130, 246, 0.26);
+  background: rgba(59, 130, 246, 0.10);
+  color: rgba(191, 219, 254, 0.95);
 }
 
 /* Kbd */
