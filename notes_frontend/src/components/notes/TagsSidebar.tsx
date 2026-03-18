@@ -12,7 +12,7 @@ export default function TagsSidebar(props: {
   const { tags, activeTag, onSelectTag, isLoading, error } = props;
 
   return (
-    <aside className="panel p-4 md:p-5">
+    <aside className="panel p-4 md:p-6">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold">Tags</h2>

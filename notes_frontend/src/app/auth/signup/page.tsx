@@ -37,13 +37,25 @@ export default function SignupPage() {
   return (
     <AppShell>
       <main className="grid place-items-center">
-        <section className="panel p-6 w-full max-w-md" aria-label="Sign up form">
-          <h1 className="text-2xl font-semibold">Sign up</h1>
-          <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
-            Create an account to sync your notes.
-          </p>
+        <section className="panel p-6 md:p-8 w-full max-w-md" aria-label="Sign up form">
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="inline-block w-10 h-10 rounded-2xl"
+              style={{
+                background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
+                boxShadow: "0 18px 50px rgba(59,130,246,0.20)",
+              }}
+            />
+            <div>
+              <h1 className="text-2xl font-semibold">Sign up</h1>
+              <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
+                Create an account to sync your notes.
+              </p>
+            </div>
+          </div>
 
-          <form className="mt-5 space-y-3" onSubmit={submit}>
+          <form className="mt-6 space-y-3" onSubmit={submit}>
             <div>
               <label className="text-sm font-medium" htmlFor="email">
                 Email

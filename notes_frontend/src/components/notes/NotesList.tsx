@@ -63,7 +63,7 @@ export default function NotesList(props: {
 
       <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {notes.map((n) => (
-          <li key={n.id} className="panel p-4" style={{ background: "rgba(15, 23, 48, 0.7)" }}>
+          <li key={n.id} className="card p-4">
             <div className="flex items-start justify-between gap-3">
               <button
                 type="button"
@@ -94,10 +94,12 @@ export default function NotesList(props: {
                   #{t}
                 </span>
               ))}
-              {(n.tags ?? []).length > 6 ? <span className="badge">+{(n.tags ?? []).length - 6}</span> : null}
+              {(n.tags ?? []).length > 6 ? (
+                <span className="badge">+{(n.tags ?? []).length - 6}</span>
+              ) : null}
             </div>
 
-            <p className="mt-3 text-xs" style={{ color: "rgba(168, 179, 214, 0.85)" }}>
+            <p className="mt-3 text-xs" style={{ color: "rgba(71, 85, 105, 0.85)" }}>
               {formatTime(n.updatedAt || n.createdAt)}
             </p>
           </li>

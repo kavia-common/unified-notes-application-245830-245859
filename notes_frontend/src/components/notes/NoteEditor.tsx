@@ -69,7 +69,7 @@ export default function NoteEditor(props: {
             className="input mt-1"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="A totally rad idea…"
+            placeholder="A clear title…"
             autoComplete="off"
           />
         </div>
@@ -83,7 +83,7 @@ export default function NoteEditor(props: {
             className="textarea mt-1"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="Type your note..."
+            placeholder="Write your note…"
             rows={8}
           />
         </div>
@@ -97,7 +97,7 @@ export default function NoteEditor(props: {
             className="input mt-1"
             value={tagsRaw}
             onChange={(e) => setTagsRaw(e.target.value)}
-            placeholder="retro, personal, todo"
+            placeholder="work, personal, ideas"
             autoComplete="off"
           />
         </div>

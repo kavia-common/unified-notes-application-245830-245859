@@ -144,7 +144,7 @@ export default function NotesPageClient() {
   return (
     <main className="grid gap-4 lg:gap-6 lg:grid-cols-[320px_1fr] items-start">
       <div className="space-y-4">
-        <section className="panel p-4 md:p-5">
+        <section className="panel p-4 md:p-6">
           <h1 className="text-2xl font-semibold">Your notes</h1>
           <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
             Search, tag, and sync across devices.

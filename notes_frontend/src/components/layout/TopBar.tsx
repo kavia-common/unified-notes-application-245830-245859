@@ -12,16 +12,26 @@ export default function TopBar() {
       <div className="container">
         <div className="py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <Link href="/" className="font-semibold tracking-wide">
+            <Link href="/" className="font-semibold tracking-tight">
+              <span
+                aria-hidden="true"
+                className="inline-block w-2.5 h-2.5 rounded-full align-middle mr-2"
+                style={{
+                  background: "linear-gradient(90deg, var(--accent), var(--accent-2))",
+                }}
+              />
               Retro Notes
             </Link>
-            <span className="badge">
+
+            <span className="badge" aria-label="Sync enabled">
               <span
                 aria-hidden="true"
                 className="inline-block w-2 h-2 rounded-full"
-                style={{ background: "linear-gradient(90deg, var(--accent), var(--accent-2))" }}
+                style={{
+                  background: "linear-gradient(90deg, var(--accent), var(--accent-2))",
+                }}
               />
-              Sync
+              Synced
             </span>
           </div>
 
